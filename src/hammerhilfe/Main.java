@@ -3,8 +3,11 @@ package hammerhilfe;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("LOL");
-
+		new Main();
+	}
+	
+	public Main() {
+		
 	}
 
 }
