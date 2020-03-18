@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/B100_SwingUtils"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
