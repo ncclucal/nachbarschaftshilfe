@@ -5,10 +5,11 @@ create database nachbarschaftshilfe;
 use nachbarschaftshilfe;
 
 create table user(
-	id bigint not null auto_increment,
 	email varchar(32) not null,
 	name varchar(32),
-	password int not null,
+	password varchar(64) not null,
+	token varchar(64),
 	
-	primary key(id)
+	primary key(email)
 );
+

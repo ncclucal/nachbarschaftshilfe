@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require 'aes/password.php';
-$pdo = new PDO('mysql:host=localhost;dbname=datenbankname', 'benutzername', 'passwort'); //eintragung
+$pdo = new PDO('mysql:host=localhost;dbname=nachbarschaftshilfe', 'root', ''); //eintragung
 
 include 'aes/login.php';
 ?>

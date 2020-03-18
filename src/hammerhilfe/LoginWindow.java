@@ -35,7 +35,7 @@ public class LoginWindow {
 		panel.add(passwordField, 1, 1, 1, 1, 1, 1);
 		
 		frame.add(panel);
-		frame.pack();
+		frame.setSize(500, 300);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
