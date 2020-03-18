@@ -8,6 +8,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 public abstract class ConnectionUtils {
+	
+	public static void main(String[] args) {
+		System.out.println("\""+getWebpageContent("http://127.0.0.1/login.php?email=me@bla.com&password=myPw")+"\"");
+	}
 
 	public static String ip;
 	
@@ -30,8 +34,13 @@ public abstract class ConnectionUtils {
 			
 			String str = "";
 			
+			boolean a = false;
 			while(scanner.hasNextLine()) {
-				str += scanner.nextLine() + "\n";
+				if(a) {
+					str += "\n";
+				}
+				str += scanner.nextLine();
+				a = true;
 			}
 			
 			scanner.close();
