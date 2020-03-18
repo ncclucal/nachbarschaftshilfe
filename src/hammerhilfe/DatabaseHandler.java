@@ -10,6 +10,11 @@ public class DatabaseHandler {
 	
 	public int getInteger(String query) {
 		//TODO
+		//id
+		//email
+		//password
+		//username
+		//created date
 		return 0;
 	}
 
