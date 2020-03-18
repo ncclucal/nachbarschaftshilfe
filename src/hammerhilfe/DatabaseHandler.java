@@ -17,7 +17,7 @@ public class DatabaseHandler {
 	
 	public static void connect() {
 		try {
-			Connection connection = (Connection) DriverManager.getConnection("jdbc://bk-medienberufe.de/ita54_ilju","ita54_ilju","ABsuJ03a");
+			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1","root","");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

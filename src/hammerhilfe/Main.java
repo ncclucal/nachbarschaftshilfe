@@ -1,7 +1,5 @@
 package hammerhilfe;
 
-import java.awt.*;
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class Main {
 	}
 	
 	public Main() {
-		
+		DatabaseHandler.connect();
 	}
 
 }
