@@ -13,6 +13,7 @@ public class Auftrag {
 		auftrag.auftragsnummer = DatabaseHandler.getInstance().getInteger("select max(nh_auftrag.id) from nh_auftrag") + 1;
 		auftrag.beschreibung = beschreibung;
 		
+		
 		return auftrag;
 	}
 	
