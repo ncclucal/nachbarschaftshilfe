@@ -61,19 +61,19 @@ public class LoginWindow implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == loginButton) {
 			if(emailField.getText().length() < 1) {
-				message("Ungültige Email");
+				message("Ungueltige Email");
 				return;
 			}
 			if(passwordField.getText().length() < 1) {
-				message("Ungültiges Passwort");
+				message("Ungueltiges Passwort");
 				return;
 			}
 			if(Utils.stringContainsAnyChar(emailField.getText(), invalidCharacters)) {
-				message("Die Email-Adresse enthält ungültige Zeichen!");
+				message("Die Email-Adresse enthaelt ungueltige Zeichen!");
 				return;
 			}
 			if(Utils.stringContainsAnyChar(passwordField.getText(), invalidCharacters)) {
-				message("Das Passwort enthält ungültige Zeichen!");
+				message("Das Passwort enthaelt ungueltige Zeichen!");
 				return;
 			}
 			String t = ConnectionUtils.getWebpageContent("login.php?email="+emailField.getText()+"&password="+passwordField.getText());
