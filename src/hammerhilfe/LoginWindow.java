@@ -34,6 +34,8 @@ public class LoginWindow {
 		panel.add(emailField, 1, 0, 1, 1, 1, 1);
 		panel.add(passwordField, 1, 1, 1, 1, 1, 1);
 		
+		panel.add(loginButton, 0, 2, 2, 1, 1, 1);
+		
 		frame.add(panel);
 		frame.setSize(500, 300);
 		frame.setLocationRelativeTo(null);
