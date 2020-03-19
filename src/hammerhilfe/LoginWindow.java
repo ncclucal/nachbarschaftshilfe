@@ -29,8 +29,8 @@ public class LoginWindow {
 			
 		});
 
-		panel.add(new JLabel("Email: "), 0, 0, 1, 1, 1, 1);
-		panel.add(new JLabel("Passwort: "), 0, 1, 1, 1, 1, 1);
+		panel.add(new JLabel("Email: "), 0, 0, 1, 1, 0, 1);
+		panel.add(new JLabel("Passwort: "), 0, 1, 1, 1, 0, 1);
 		
 		panel.add(emailField, 1, 0, 1, 1, 1, 1);
 		panel.add(passwordField, 1, 1, 1, 1, 1, 1);
