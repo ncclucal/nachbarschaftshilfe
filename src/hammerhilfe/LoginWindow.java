@@ -1,6 +1,7 @@
 package hammerhilfe;
 
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -17,7 +18,7 @@ public class LoginWindow {
 	
 	private JButton loginButton;
 	
-	public LoginWindow() {
+	public LoginWindow(){
 		frame = new JFrame();
 		panel = new JGridPanel(10);
 		
@@ -41,6 +42,9 @@ public class LoginWindow {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
+		
 	}
+	
 	
 }
