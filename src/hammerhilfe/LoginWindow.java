@@ -8,11 +8,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import de.b100.swing.JGridPanel;
 import de.b100.swing.JPlaceholderTextField;
 
 public class LoginWindow implements ActionListener{
+	
+	public static final String invalidCharacters = "?&=";
 	
 	private JFrame frame;
 	private JGridPanel panel;
@@ -57,8 +60,39 @@ public class LoginWindow implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == loginButton) {
-			System.out.println("Login");
+			if(emailField.getText().length() < 1) {
+				message("Ungültige Email");
+				return;
+			}
+			if(passwordField.getText().length() < 1) {
+				message("Ungültiges Passwort");
+				return;
+			}
+			if(Utils.stringContainsAnyChar(emailField.getText(), invalidCharacters)) {
+				message("Die Email-Adresse enthält ungültige Zeichen!");
+				return;
+			}
+			if(Utils.stringContainsAnyChar(passwordField.getText(), invalidCharacters)) {
+				message("Das Passwort enthält ungültige Zeichen!");
+				return;
+			}
+			String t = ConnectionUtils.getWebpageContent("login.php?email="+emailField.getText()+"&password="+passwordField.getText());
+			if(t == null) {
+				message("Verbindung konnte nicht hergestellt werden.");
+			}
+			if(t.startsWith("ERROR:")) {
+				message(t.substring("error:".length()));
+			}
+			if(t.startsWith("TOKEN:")) {
+				String token = t.substring("TOKEN:".length());
+				
+				System.out.println("Token: "+token);
+			}
 		}
+	}
+	
+	public void message(String s) {
+		JOptionPane.showMessageDialog(frame, s);
 	}
 	
 	

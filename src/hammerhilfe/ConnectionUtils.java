@@ -10,7 +10,8 @@ import java.util.Scanner;
 public abstract class ConnectionUtils {
 	
 	public static void main(String[] args) {
-		System.out.println("\""+getWebpageContent("http://127.0.0.1/login.php?email=me@bla.com&password=myPw")+"\"");
+		init();
+		System.out.println("\""+getWebpageContent("login.php?email=me@bla.com&password=myPw")+"\"");
 	}
 
 	public static String ip;
@@ -26,9 +27,15 @@ public abstract class ConnectionUtils {
 		}
 	}
 	
+	/**
+	 * @return null if connection fails
+	 */
 	public static String getWebpageContent(String adress) {
+		if(ip == null) {
+			throw new NullPointerException("ConnectionUtils not initialized!");
+		}
 		try {
-			URL url = new URL(adress);
+			URL url = new URL(ip+adress);
 			
 			Scanner scanner = new Scanner(new InputStreamReader(url.openStream()));
 			
@@ -46,9 +53,10 @@ public abstract class ConnectionUtils {
 			scanner.close();
 			
 			return str;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 	
 }
