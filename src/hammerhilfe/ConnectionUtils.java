@@ -5,13 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class ConnectionUtils {
 	
 	public static void main(String[] args) {
 		init();
-		System.out.println("\""+getWebpageContent("login.php?email=me@bla.com&password=myPw")+"\"");
 	}
 
 	public static String ip;
@@ -57,6 +57,22 @@ public abstract class ConnectionUtils {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static ArrayList<AngebotInfo> get(String type){
+		ArrayList<AngebotInfo> list = new ArrayList<>();
+		
+		String cont = getWebpageContent("query_articles.php?typ="+type);
+		String[] arr = cont.split("<br>");
+		for(String str : arr) {
+			//TODO: Split only at first -
+			String[] s = str.split("-");
+			
+			AngebotInfo ai = new AngebotInfo(s[1], s[0]);
+			list.add(ai);
+		}
+		
+		return list;
 	}
 	
 }

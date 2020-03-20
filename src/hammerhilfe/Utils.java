@@ -1,5 +1,10 @@
 package hammerhilfe;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+
 public abstract class Utils {
 	
 	public static boolean stringContainsAnyChar(String string, String chars) {
@@ -23,6 +28,18 @@ public abstract class Utils {
 			i++;
 		}
 		return false;
+	}
+	
+	public static BufferedImage loadImage(String path) {
+		return loadImage(new File(path));
+	}
+	
+	public static BufferedImage loadImage(File file) {
+		try {
+			return ImageIO.read(file);
+		}catch (Exception e) {
+			return null;
+		}
 	}
 	
 }
