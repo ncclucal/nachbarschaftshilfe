@@ -17,7 +17,8 @@ public class Main {
 	public Main() {
 		ConnectionUtils.init();
 		
-		new LoginWindow();
+//		new LoginWindow();
+		new MainWindow();
 	}
 
 }
