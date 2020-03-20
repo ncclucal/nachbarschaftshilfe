@@ -44,9 +44,9 @@ public class RegisterWindow extends TextInputWindow{
 			new LoginWindow();
 		}
 		if(e.getSource() == registerButton) {
-			//TODO Kontrollabfragen, ungültige zeichen
+			//TODO Kontrollabfragen, ungï¿½ltige zeichen
 			if(!passwordField.getPassword().equals(passwordConfirmField.getPassword())) {
-				message(getFrame(), "Die beiden Passwörter stimmen nicht überein!");
+				message(getFrame(), "Die beiden Passwoerter stimmen nicht ueberein!");
 			}
 			//TODO Regsitrieren
 		}

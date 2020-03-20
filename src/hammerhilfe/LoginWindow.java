@@ -39,19 +39,19 @@ public class LoginWindow extends TextInputWindow{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == loginButton) {
 			if(emailField.getText().length() < 1) {
-				message(getFrame(), "Ungültige Email");
+				message(getFrame(), "Ungueltige Email");
 				return;
 			}
 			if(passwordField.getText().length() < 1) {
-				message(getFrame(), "Ungültiges Passwort");
+				message(getFrame(), "Ungueltiges Passwort");
 				return;
 			}
 			if(Utils.stringContainsAnyChar(emailField.getText(), invalidCharacters)) {
-				message(getFrame(), "Die Email-Adresse enthält ungültige Zeichen!");
+				message(getFrame(), "Die Email-Adresse enthaelt ungueltige Zeichen!");
 				return;
 			}
 			if(Utils.stringContainsAnyChar(passwordField.getText(), invalidCharacters)) {
-				message(getFrame(), "Das Passwort enthält ungültige Zeichen!");
+				message(getFrame(), "Das Passwort enthaelt ungueltige Zeichen!");
 				return;
 			}
 			String t = ConnectionUtils.getWebpageContent("login.php?email="+emailField.getText()+"&password="+passwordField.getText());
