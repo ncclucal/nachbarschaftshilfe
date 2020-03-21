@@ -35,4 +35,12 @@ public class MainWindow {
 		return queryThread;
 	}
 	
+	public JFrame getFrame() {
+		return frame;
+	}
+	
+	public JTabbedPane getTabs() {
+		return tabs;
+	}
+	
 }

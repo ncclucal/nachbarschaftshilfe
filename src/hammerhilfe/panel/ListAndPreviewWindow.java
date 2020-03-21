@@ -2,8 +2,11 @@ package hammerhilfe.panel;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
@@ -12,11 +15,12 @@ import javax.swing.event.ListSelectionListener;
 
 import de.b100.swing.JGridPanel;
 import hammerhilfe.AngebotInfo;
+import hammerhilfe.CreateWindow;
 import hammerhilfe.ImagePanel;
 import hammerhilfe.MainWindow;
 import hammerhilfe.QueryThread;
 
-public abstract class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener{
+public abstract class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener, ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -31,9 +35,15 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	private JLabel previewDescription;
 	private ImagePanel previewImage;
 	
-	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel) {
+	private String createButtonText;
+	private JButton createButton;
+	private CreateWindow createWindow;
+	
+	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel, String createButtonText, CreateWindow createWindow) {
 		this.mainWindow = mainWindow;
 		this.artikel = artikel;
+		this.createButtonText = createButtonText;
+		this.createWindow = createWindow;
 		create();
 	}
 	
@@ -44,11 +54,12 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		list = new JList<>(AngebotInfo.toArray(artikel));
 		previewPanel = new JGridPanel(10);
 		previewPanel.getGridBagConstraints().anchor = GridBagConstraints.NORTHWEST;
-		
 		previewTitle = new JTextField();
 		previewDescription = new JLabel();
 		previewImage = new ImagePanel(null);
 		previewImage.setImageHeight(256);
+		createButton = new JButton(createButtonText);
+		createButton.addActionListener(this);
 		
 		previewTitle.setEditable(false);
 		
@@ -60,7 +71,8 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		list.addListSelectionListener(this);
 		
 		add(list, 0, 0, 1, 1, 0, 1);
-		add(previewPanel, 1, 0, 1, 1, 1, 1);
+		add(previewPanel, 1, 0, 1, 2, 1, 1);
+		add(createButton, 0, 1, 1, 1, 0, 0);
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {
@@ -82,6 +94,10 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		
 		if(queryThread.isSleeping())
 			queryThread.interrupt();
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		createWindow.create(mainWindow.getFrame());
 	}
 	
 	public JTextField getPreviewTitle() {

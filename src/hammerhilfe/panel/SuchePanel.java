@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import hammerhilfe.AngebotInfo;
 import hammerhilfe.MainWindow;
+import hammerhilfe.NeueBestellungWindow;
 
 public class SuchePanel extends ListAndPreviewWindow{
 
@@ -11,6 +12,6 @@ public class SuchePanel extends ListAndPreviewWindow{
 
 
 	public SuchePanel(MainWindow mainWindow, ArrayList<AngebotInfo> artikel) {
-		super(mainWindow, artikel);
+		super(mainWindow, artikel, "Neue Bestellung", new NeueBestellungWindow());
 	}
 }
