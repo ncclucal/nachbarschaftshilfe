@@ -16,6 +16,8 @@ public class ListAndPreviewWindow extends JGridPanel implements ListSelectionLis
 	
 	private static final long serialVersionUID = 1L;
 
+	private MainWindow mainWindow;
+	
 	private ArrayList<AngebotInfo> artikel;
 	
 	private JList<AngebotInfo> list;
@@ -25,7 +27,8 @@ public class ListAndPreviewWindow extends JGridPanel implements ListSelectionLis
 	private JLabel previewDescription;
 	private ImagePanel previewImage;
 	
-	public ListAndPreviewWindow(ArrayList<AngebotInfo> artikel) {
+	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel) {
+		this.mainWindow = mainWindow;
 		this.artikel = artikel;
 		create();
 	}
@@ -57,11 +60,36 @@ public class ListAndPreviewWindow extends JGridPanel implements ListSelectionLis
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {
-		AngebotInfo a = list.getSelectedValue();
+//		AngebotInfo a = list.getSelectedValue();
+//		
+//		String str = ConnectionUtils.getWebpageContent("query_article_info.php?article="+a.getNummer());
+//		
+//		String[] arr = str.split("<br>");
+//		previewTitle.setText(arr[0]);
+//		previewDescription.setText(arr[1]);
 		
-		previewTitle.setText(a.getTitle());
-//		previewDescription.setText(a.getDescription());
-//		previewImage.setImage(a.getImage());
+		QueryThread queryThread = mainWindow.getQueryThread();
+		
+		queryThread.setListAndPreviewWindow(this);
+		queryThread.setCurrentArticleId(list.getSelectedValue().getNummer());
+		
+		previewTitle.setText("Infos werden geladen...");
+		previewDescription.setText("");
+		
+		if(queryThread.isSleeping())
+			queryThread.interrupt();
+	}
+	
+	public JTextField getPreviewTitle() {
+		return previewTitle;
+	}
+	
+	public JLabel getPreviewDescription() {
+		return previewDescription;
+	}
+	
+	public ImagePanel getPreviewImage() {
+		return previewImage;
 	}
 	
 }
