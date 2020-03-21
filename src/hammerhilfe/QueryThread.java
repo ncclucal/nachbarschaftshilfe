@@ -1,5 +1,7 @@
 package hammerhilfe;
 
+import hammerhilfe.panel.ListAndPreviewWindow;
+
 public class QueryThread extends Thread{
 	
 	private String currentArticleId;
@@ -44,7 +46,7 @@ public class QueryThread extends Thread{
 			//werden die Informationen für den eingetragenen Artikel abgefragt
 			if(currentArticleId.equals(queriedArticle)) {
 				listAndPreviewWindow.getPreviewTitle().setText(arr[0]);
-				listAndPreviewWindow.getPreviewDescription().setText(arr[2]);
+				listAndPreviewWindow.getPreviewDescription().setText(arr[1]);
 				return true;
 			}else {
 				return false;

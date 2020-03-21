@@ -4,6 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import hammerhilfe.panel.AngebotPanel;
+import hammerhilfe.panel.SuchePanel;
+
 public class MainWindow {
 	
 	private JFrame frame;
@@ -14,8 +17,8 @@ public class MainWindow {
 		frame = new JFrame("Nachbarschaftshilfe");
 		tabs = new JTabbedPane();
 
-		tabs.add(new ListAndPreviewWindow(this, ConnectionUtils.get("angebot")), "Ich Biete");
-		tabs.add(new ListAndPreviewWindow(this, ConnectionUtils.get("suche")), "Ich Suche");
+		tabs.add(new AngebotPanel(this, ConnectionUtils.get("angebot")), "Ich Biete");
+		tabs.add(new SuchePanel(this, ConnectionUtils.get("suche")), "Ich Suche");
 		tabs.add(new JPanel(), "Bestellnummer eingeben");
 		
 		frame.add(tabs);

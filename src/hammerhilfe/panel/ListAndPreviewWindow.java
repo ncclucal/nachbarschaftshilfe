@@ -1,4 +1,4 @@
-package hammerhilfe;
+package hammerhilfe.panel;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -11,8 +11,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import de.b100.swing.JGridPanel;
+import hammerhilfe.AngebotInfo;
+import hammerhilfe.ImagePanel;
+import hammerhilfe.MainWindow;
+import hammerhilfe.QueryThread;
 
-public class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener{
+public abstract class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener{
 	
 	private static final long serialVersionUID = 1L;
 
