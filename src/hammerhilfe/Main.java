@@ -11,7 +11,16 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		new Main();
+		try{
+//			throw new RuntimeException(new NullPointerException("Test"));
+			
+			new Main();
+		}catch (Exception e) {
+			e.printStackTrace();
+			try {
+				new CrashReportWindow(e);
+			}catch (Exception e2) {}
+		}
 	}
 	
 	public Main() {
