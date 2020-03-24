@@ -1,0 +1,8 @@
+Sicherheitsabfragen
+	(URL Parameter, SQL Injection)
+	
+Angebote Löschen
+
+Token abfragen
+	(Beim Eintragen/Löschen von Angeboten)
+	
