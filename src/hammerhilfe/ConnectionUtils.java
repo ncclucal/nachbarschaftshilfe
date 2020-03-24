@@ -31,10 +31,6 @@ public abstract class ConnectionUtils {
 	 * @return null if connection fails
 	 */
 	public static String getWebpageContent(String adress) {
-		try {
-			Thread.sleep(500);
-		}catch (Exception e) {}
-		
 		if(ip == null) {
 			throw new NullPointerException("ConnectionUtils not initialized!");
 		}

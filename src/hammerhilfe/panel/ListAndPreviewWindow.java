@@ -112,4 +112,12 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		return previewImage;
 	}
 	
+	public JList<AngebotInfo> getList() {
+		return list;
+	}
+	
+	public ArrayList<AngebotInfo> getArtikel() {
+		return artikel;
+	}
+	
 }
