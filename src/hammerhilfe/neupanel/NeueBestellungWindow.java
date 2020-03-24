@@ -1,8 +1,10 @@
-package hammerhilfe;
+package hammerhilfe.neupanel;
 
 import java.awt.event.ActionEvent;
 
-public class NeueBestellungWindow extends CreateWindow{
+import hammerhilfe.NotImplementedException;
+
+public class NeueBestellungWindow extends NeuWindow{
 
 	public NeueBestellungWindow() {
 		createButtonText = "Bestellung aufgeben!";

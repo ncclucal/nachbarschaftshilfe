@@ -1,4 +1,4 @@
-package hammerhilfe;
+package hammerhilfe.neupanel;
 
 import java.awt.event.ActionListener;
 
@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import de.b100.swing.JGridPanel;
 
-public abstract class CreateWindow implements ActionListener{
+public abstract class NeuWindow implements ActionListener{
 	
 	private JFrame frame;
 	private JGridPanel panel;
@@ -23,7 +23,7 @@ public abstract class CreateWindow implements ActionListener{
 	
 	protected String createButtonText = "Erstellen";
 	
-	public CreateWindow() {
+	public NeuWindow() {
 		
 	}
 	

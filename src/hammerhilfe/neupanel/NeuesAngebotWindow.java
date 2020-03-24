@@ -1,8 +1,10 @@
-package hammerhilfe;
+package hammerhilfe.neupanel;
 
 import java.awt.event.ActionEvent;
 
-public class NeuesAngebotWindow extends CreateWindow{
+import hammerhilfe.NotImplementedException;
+
+public class NeuesAngebotWindow extends NeuWindow{
 
 	public NeuesAngebotWindow() {
 		createButtonText = "Angebot erstellen!";

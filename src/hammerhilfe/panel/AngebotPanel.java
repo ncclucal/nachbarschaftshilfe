@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import hammerhilfe.AngebotInfo;
 import hammerhilfe.MainWindow;
-import hammerhilfe.NeuesAngebotWindow;
+import hammerhilfe.neupanel.NeuesAngebotWindow;
 
 public class AngebotPanel extends ListAndPreviewWindow{
 

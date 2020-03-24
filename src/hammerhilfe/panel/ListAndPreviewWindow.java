@@ -15,10 +15,10 @@ import javax.swing.event.ListSelectionListener;
 
 import de.b100.swing.JGridPanel;
 import hammerhilfe.AngebotInfo;
-import hammerhilfe.CreateWindow;
 import hammerhilfe.ImagePanel;
 import hammerhilfe.MainWindow;
 import hammerhilfe.QueryThread;
+import hammerhilfe.neupanel.NeuWindow;
 
 public abstract class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener, ActionListener{
 	
@@ -37,9 +37,9 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	
 	private String createButtonText;
 	private JButton createButton;
-	private CreateWindow createWindow;
+	private NeuWindow createWindow;
 	
-	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel, String createButtonText, CreateWindow createWindow) {
+	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel, String createButtonText, NeuWindow createWindow) {
 		this.mainWindow = mainWindow;
 		this.artikel = artikel;
 		this.createButtonText = createButtonText;

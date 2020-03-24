@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import hammerhilfe.AngebotInfo;
 import hammerhilfe.MainWindow;
-import hammerhilfe.NeueBestellungWindow;
+import hammerhilfe.neupanel.NeueBestellungWindow;
 
 public class SuchePanel extends ListAndPreviewWindow{
 
