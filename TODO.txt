@@ -1,7 +1,7 @@
 Sicherheitsabfragen
 	(URL Parameter, SQL Injection)
 	
-Angebote Löschen
+Angebote erstellen und Löschen
 
 Token abfragen
 	(Beim Eintragen/Löschen von Angeboten)
