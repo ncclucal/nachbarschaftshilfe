@@ -14,7 +14,7 @@ public abstract class ConnectionUtils {
 		init();
 	}
 
-	public static String ip;
+	public static String ip = "http://127.0.0.1/";
 	
 	public static void init() {
 		try {
