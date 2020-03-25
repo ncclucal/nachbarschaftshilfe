@@ -39,9 +39,8 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	private JButton createButton;
 	private NeuWindow createWindow;
 	
-	public ListAndPreviewWindow(MainWindow mainWindow, ArrayList<AngebotInfo> artikel, String createButtonText, NeuWindow createWindow) {
+	public ListAndPreviewWindow(MainWindow mainWindow, String createButtonText, NeuWindow createWindow) {
 		this.mainWindow = mainWindow;
-		this.artikel = artikel;
 		this.createButtonText = createButtonText;
 		this.createWindow = createWindow;
 		create();
@@ -51,7 +50,7 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		
 		Dimension dim1 = new Dimension(256, 0);
 
-		list = new JList<>(AngebotInfo.toArray(artikel));
+		list = new JList<>();
 		previewPanel = new JGridPanel(10);
 		previewPanel.getGridBagConstraints().anchor = GridBagConstraints.NORTHWEST;
 		previewTitle = new JTextField();
@@ -73,6 +72,14 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		add(list, 0, 0, 1, 1, 0, 1);
 		add(previewPanel, 1, 0, 1, 2, 1, 1);
 		add(createButton, 0, 1, 1, 1, 0, 0);
+	}
+	
+	public abstract void update();
+	
+	public void setListData(ArrayList<AngebotInfo> list) {
+		AngebotInfo[] arr = AngebotInfo.toArray(list);
+		
+		this.list.setListData(arr);
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {

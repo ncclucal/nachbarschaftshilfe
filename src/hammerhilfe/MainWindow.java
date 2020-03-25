@@ -21,8 +21,8 @@ public class MainWindow {
 		frame = new JFrame("Nachbarschaftshilfe");
 		tabs = new JTabbedPane();
 
-		suchePanel = new SuchePanel(this, ConnectionUtils.get("suche"));
-		angebotPanel = new AngebotPanel(this, ConnectionUtils.get("angebot"));
+		suchePanel = new SuchePanel(this);
+		angebotPanel = new AngebotPanel(this);
 		
 		tabs.add(angebotPanel, "Ich Biete");
 		tabs.add(suchePanel, "Ich Suche");
