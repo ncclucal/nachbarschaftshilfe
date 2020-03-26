@@ -18,7 +18,7 @@ public class QueryThread extends Thread{
 		while(true) {
 			try {
 				sleeping = true;
-				Thread.sleep(10000);
+				Thread.sleep(1000);
 			}catch (Exception e) {
 			}
 			sleeping = false;
@@ -28,32 +28,31 @@ public class QueryThread extends Thread{
 	}
 	
 	private void tryQuery() {
-		boolean a = query();
-		if(!a) {
-			tryQuery();
+		try{
+			boolean a = query();
+			if(!a) {
+				tryQuery();
+			}
+		}catch (NullPointerException e) {
+			return;
 		}
 	}
 	
 	private boolean query() {
-		try {
-			String queriedArticle = currentArticleId;
-			String str = ConnectionUtils.getWebpageContent("query_article_info.php?article="+queriedArticle);
-			
-			String[] arr = str.split("<br>");
-			
-			//Wenn ein anderer Artikel zum Abfragen eingetragen wurde, werden
-			//die Informationen für diesen Artikel nicht eingetragen und es
-			//werden die Informationen für den eingetragenen Artikel abgefragt
-			if(currentArticleId.equals(queriedArticle)) {
-				listAndPreviewWindow.getPreviewTitle().setText(arr[0]);
-				listAndPreviewWindow.getPreviewDescription().setText(arr[1]);
-				return true;
-			}else {
-				return false;
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
+		String queriedArticle = currentArticleId;
+		String str = ConnectionUtils.getWebpageContent("query_article_info.php?article="+queriedArticle);
+		
+		String[] arr = str.split("<br>");
+		
+		//Wenn ein anderer Artikel zum Abfragen eingetragen wurde, werden
+		//die Informationen für diesen Artikel nicht eingetragen und es
+		//werden die Informationen für den eingetragenen Artikel abgefragt
+		if(currentArticleId.equals(queriedArticle)) {
+			listAndPreviewWindow.getPreviewTitle().setText(arr[0]);
+			listAndPreviewWindow.getPreviewDescription().setText(arr[1]);
 			return true;
+		}else {
+			return false;
 		}
 	}
 	
