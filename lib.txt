@@ -1,1 +1,9 @@
-nudeln.png=nudeln,pasta
+nudeln.png=nudeln,pasta,spaghetti;
+eier.png=eier;
+kartoffeln.png=kartoffeln;
+mais.png=mais;
+milch.png=milch;
+papier.png=papier,toilettenpapier,klopapier;
+ravioli.png=ravioli;
+reis.png=reis;
+sterilium.png=sterilium,desinfektionsmittel,handdesinfektion;
