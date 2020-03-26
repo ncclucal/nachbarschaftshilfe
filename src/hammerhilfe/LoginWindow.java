@@ -66,6 +66,8 @@ public class LoginWindow extends TextInputWindow{
 				
 				System.out.println("Token: "+token);
 			}
+			close();
+			new MainWindow();
 		}
 		if(e.getSource() == registerButton) {
 			close();

@@ -15,6 +15,7 @@ import javax.swing.event.ListSelectionListener;
 
 import de.b100.swing.JGridPanel;
 import hammerhilfe.AngebotInfo;
+import hammerhilfe.ConnectionUtils;
 import hammerhilfe.ImagePanel;
 import hammerhilfe.MainWindow;
 import hammerhilfe.QueryThread;
@@ -38,6 +39,8 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	private String createButtonText;
 	private JButton createButton;
 	private NeuWindow createWindow;
+	
+	private int selected = -1;
 	
 	public ListAndPreviewWindow(MainWindow mainWindow, String createButtonText, NeuWindow createWindow) {
 		this.mainWindow = mainWindow;
@@ -83,24 +86,20 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	}
 	
 	public void valueChanged(ListSelectionEvent e) {
-//		AngebotInfo a = list.getSelectedValue();
-//		
-//		String str = ConnectionUtils.getWebpageContent("query_article_info.php?article="+a.getNummer());
-//		
-//		String[] arr = str.split("<br>");
-//		previewTitle.setText(arr[0]);
-//		previewDescription.setText(arr[1]);
-		
-		QueryThread queryThread = mainWindow.getQueryThread();
-		
-		queryThread.setListAndPreviewWindow(this);
-		queryThread.setCurrentArticleId(list.getSelectedValue().getNummer());
-		
-		previewTitle.setText("Infos werden geladen...");
-		previewDescription.setText("");
-		
-		if(queryThread.isSleeping())
+		if(selected != list.getSelectedIndex()) {
+			selected = list.getSelectedIndex();
+			
+			AngebotInfo a = list.getSelectedValue();
+			
+			previewTitle.setText("Informationen werden geladen...");
+			previewDescription.setText("");
+			
+			QueryThread queryThread = mainWindow.getQueryThread();
+			queryThread.setToQuery(a);
+			queryThread.setListAndPreviewWindow(this);
+			
 			queryThread.interrupt();
+		}
 	}
 	
 	public void actionPerformed(ActionEvent e) {

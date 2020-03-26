@@ -44,12 +44,25 @@ public class RegisterWindow extends TextInputWindow{
 			new LoginWindow();
 		}
 		if(e.getSource() == registerButton) {
-			//TODO Kontrollabfragen, ungï¿½ltige zeichen
-			if(!passwordField.getPassword().equals(passwordConfirmField.getPassword())) {
-				message(getFrame(), "Die beiden Passwoerter stimmen nicht ueberein!");
+			{
+				//TODO Kontrollabfragen, ungï¿½ltige zeichen
+				String password = Utils.toString(passwordField.getPassword());
+				String passwordConfirm = Utils.toString(passwordConfirmField.getPassword());
+				
+				if(!password.equals(passwordConfirm)) {
+					message(getFrame(), "Die beiden Passwoerter stimmen nicht überein!");
+				}else {
+					String email = emailField.getText();
+					
+					String str = ConnectionUtils.getWebpageContent("register.php?email="+email+"&password="+password);
+					
+					System.out.println(str);
+				}
 			}
-			//TODO Regsitrieren
+			System.gc();
 		}
 	}
+	
+	
 
 }

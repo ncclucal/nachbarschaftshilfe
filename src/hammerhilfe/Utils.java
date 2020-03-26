@@ -42,4 +42,22 @@ public abstract class Utils {
 		}
 	}
 	
+	public static String toString(char[] arr) {
+		String str = "";
+		int i=0;
+		while(i < arr.length) {
+			str += arr[i];
+			i++;
+		}
+		return str;
+	}
+	
+	public static final String invalidCharacters = "&=";
+	
+	public static void checkInvalid(String str) {
+		if(stringContainsAnyChar(str, invalidCharacters)) {
+			throw new InvalidInputException("Die Eingabe Enthält ungültige Zeichen");
+		}
+	}
+	
 }

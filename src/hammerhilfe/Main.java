@@ -32,9 +32,9 @@ public class Main {
 			JOptionPane.showMessageDialog(null, "Verbindung konnte nicht hergestellt werden!");
 			return;
 		}
+		System.out.println("Creating Window");
 		
 //		new LoginWindow();
-		System.out.println("Creating Window");
 		new MainWindow();
 	}
 
