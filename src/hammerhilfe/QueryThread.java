@@ -34,7 +34,7 @@ public class QueryThread extends Thread{
 				String[] arr = str.split("<br>");
 				if(!(toQuery != null || listAndPreviewWindow != null)) {
 					l.getPreviewTitle().setText(arr[0]);
-					l.getPreviewTitle().setText(arr[1]);
+					l.getPreviewDescription().setText(arr[1]);
 				}
 			}
 		}

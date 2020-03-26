@@ -1,5 +1,9 @@
 package hammerhilfe;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -34,8 +38,20 @@ public class Main {
 		}
 		System.out.println("Creating Window");
 		
-//		new LoginWindow();
-		new MainWindow();
+		File file = new File("token");
+		if(file.exists()) {
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				LoginInfo.token = br.readLine();
+				br.close();
+				new MainWindow();
+			}catch (Exception e) {
+				e.printStackTrace();
+				new LoginWindow();
+			}
+		}else {
+			new LoginWindow();
+		}
 	}
 
 }

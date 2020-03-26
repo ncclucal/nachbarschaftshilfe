@@ -42,6 +42,8 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	
 	private int selected = -1;
 	
+	private JButton deleteButton;
+	
 	public ListAndPreviewWindow(MainWindow mainWindow, String createButtonText, NeuWindow createWindow) {
 		this.mainWindow = mainWindow;
 		this.createButtonText = createButtonText;
@@ -62,6 +64,7 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		previewImage.setImageHeight(256);
 		createButton = new JButton(createButtonText);
 		createButton.addActionListener(this);
+		deleteButton = new JButton("Löschen");
 		
 		previewTitle.setEditable(false);
 		

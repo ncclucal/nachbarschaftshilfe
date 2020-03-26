@@ -1,8 +1,11 @@
 package hammerhilfe;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileWriter;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -21,17 +24,25 @@ public class LoginWindow extends TextInputWindow{
 	private JButton loginButton;
 	private JButton registerButton;
 	
+	private JCheckBox saveInfoCheckbox;
+	
 	public LoginWindow(){
+		
+		setTitle("Einloggen");
 		
 		emailField = new JTextField();
 		passwordField = new JPasswordField();
 		loginButton = SwingUtils.newJButton("Login", this);
 		registerButton = SwingUtils.newJButton("Registrieren", this);
+		saveInfoCheckbox = new JCheckBox(" Passwort Speichern");
+		saveInfoCheckbox.setBackground(null);
 		
 		addButton(loginButton);
 		addButton(registerButton);
 		addTextField("Email: ", emailField);
 		addTextField("Passwort: ", passwordField);
+		addCheckBox(saveInfoCheckbox);
+		
 		
 		create();
 	}
@@ -60,11 +71,25 @@ public class LoginWindow extends TextInputWindow{
 			}
 			if(t.startsWith("ERROR:")) {
 				message(getFrame(), t.substring("error:".length()));
+				return;
 			}
-			if(t.startsWith("TOKEN:")) {
-				String token = t.substring("TOKEN:".length());
-				
-				System.out.println("Token: "+token);
+			String token = t.substring("TOKEN:".length());
+			
+			System.out.println("Token: "+token);
+			
+			LoginInfo.token = token;
+			
+			if(saveInfoCheckbox.isSelected() && LoginInfo.token != null) {
+				System.out.println("Saving Token: "+LoginInfo.token);
+				File file = new File("token");
+				try {
+					file.createNewFile();
+					FileWriter fw = new FileWriter(file);
+					fw.write(LoginInfo.token);
+					fw.close();
+				}catch (Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 			close();
 			new MainWindow();
