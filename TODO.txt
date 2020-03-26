@@ -8,3 +8,5 @@ Registerwindow
 PHP-Skript zum Artikel Löschen
 	delete_article.php
 	ArtikelNummer = article, Token = token, Email = email
+	
+Dateien im AppData Speichern
