@@ -1,6 +1,3 @@
-Sicherheitsabfragen
-	(URL Parameter, SQL Injection)
-	
 Angebote erstellen und Löschen
 
 Token abfragen
