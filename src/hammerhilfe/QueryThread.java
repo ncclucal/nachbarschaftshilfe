@@ -35,6 +35,7 @@ public class QueryThread extends Thread{
 				if(!(toQuery != null || listAndPreviewWindow != null)) {
 					l.getPreviewTitle().setText(arr[0]);
 					l.getPreviewDescription().setText(arr[1]);
+					l.getPreviewImage().setImage(Library.getImageForString(arr[1]));
 				}
 			}
 		}

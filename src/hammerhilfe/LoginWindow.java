@@ -77,6 +77,7 @@ public class LoginWindow extends TextInputWindow{
 			
 			System.out.println("Token: "+token);
 			
+			LoginInfo.email = emailField.getText();
 			LoginInfo.token = token;
 			
 			if(saveInfoCheckbox.isSelected() && LoginInfo.token != null) {
@@ -85,6 +86,7 @@ public class LoginWindow extends TextInputWindow{
 				try {
 					file.createNewFile();
 					FileWriter fw = new FileWriter(file);
+					fw.write(LoginInfo.email + "\n");
 					fw.write(LoginInfo.token);
 					fw.close();
 				}catch (Exception ex) {

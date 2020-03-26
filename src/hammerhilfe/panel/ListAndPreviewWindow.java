@@ -71,6 +71,7 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		previewPanel.add(previewTitle, 0, 0, 1, 1, 1, 0);
 		previewPanel.add(previewDescription, 0, 1, 1, 1, 1, 0);
 		previewPanel.add(previewImage, 0, 2, 1, 1, 1, 1);
+		previewPanel.add(deleteButton);
 		
 		list.setPreferredSize(dim1);
 		list.addListSelectionListener(this);

@@ -1,7 +1,10 @@
 package hammerhilfe;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -58,6 +61,53 @@ public abstract class Utils {
 		if(stringContainsAnyChar(str, invalidCharacters)) {
 			throw new InvalidInputException("Die Eingabe Enthält ungültige Zeichen");
 		}
+	}
+	
+	public static String loadFile(String path) {
+		return loadFile(new File(path));
+	}
+	
+	public static String loadFile(File file) {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			
+			String out = "";
+			String next = null;
+			while(true) {
+				next = br.readLine();
+				if(next == null) {
+					break;
+				}
+				out += next + "\n";
+			}
+			br.close();
+			return out;
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static ArrayList<String> toList(String[] entries) {
+		ArrayList<String> list = new ArrayList<String>();
+		for(String str : entries) {
+			list.add(str);
+		}
+		return list;
+	}
+	
+	public static boolean stringContainsAnyWord(String string, ArrayList<String> words) {
+		for(String word : words) {
+			if(stringContainsWord(string, word))return true;
+		}
+		return false;
+	}
+	
+	public static boolean stringContainsWord(String string, String word) {
+		String[] arr = string.split(" ");
+		for(String str : arr) {
+			if(str.equalsIgnoreCase(word))return true;
+		}
+		return false;
 	}
 	
 }
