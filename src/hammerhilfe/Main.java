@@ -1,5 +1,6 @@
 package hammerhilfe;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class Main {
@@ -25,6 +26,11 @@ public class Main {
 	
 	public Main() {
 		ConnectionUtils.init();
+		
+		if(!ConnectionUtils.canConnect(ConnectionUtils.ip)) {
+			JOptionPane.showMessageDialog(null, "Verbindung konnte nicht hergestellt werden!");
+			return;
+		}
 		
 //		new LoginWindow();
 		new MainWindow();

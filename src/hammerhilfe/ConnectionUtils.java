@@ -3,6 +3,7 @@ package hammerhilfe;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,6 +25,15 @@ public abstract class ConnectionUtils {
 			System.out.println("IP: "+ip);
 		}catch (Exception e) {
 			throw new RuntimeException(e);
+		}
+	}
+	
+	public static boolean canConnect(String ip) {
+		try {
+			new URL(ip).openStream();
+			return true;
+		}catch (Exception e) {
+			return false;
 		}
 	}
 	
