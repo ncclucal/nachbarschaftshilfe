@@ -9,4 +9,8 @@ PHP-Skript zum Artikel Löschen
 	delete_article.php
 	ArtikelNummer = article, Token = token, Email = email
 	
+PHP-Skript zum Token gültigkeit abfragen
+	query_token_valid.php
+	token, email
+	
 Dateien im AppData Speichern
