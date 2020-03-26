@@ -27,12 +27,14 @@ public class Main {
 	public Main() {
 		ConnectionUtils.init();
 		
+		System.out.println("Trying to Connect to server...");
 		if(!ConnectionUtils.canConnect(ConnectionUtils.ip)) {
 			JOptionPane.showMessageDialog(null, "Verbindung konnte nicht hergestellt werden!");
 			return;
 		}
 		
 //		new LoginWindow();
+		System.out.println("Creating Window");
 		new MainWindow();
 	}
 
