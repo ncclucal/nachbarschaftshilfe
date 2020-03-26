@@ -9,22 +9,27 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.management.RuntimeErrorException;
+
 public abstract class ConnectionUtils {
 	
 	public static void main(String[] args) {
 		init();
 	}
 
-	public static String ip = "http://127.0.0.1/";
+	public static String ip = "http://luca.way2.net/nachbarschaftshilfe/";
 	
 	public static void init() {
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("IP.txt")));
-			ip = br.readLine();
-			br.close();
-			System.out.println("IP: "+ip);
-		}catch (Exception e) {
-			throw new RuntimeException(e);
+		File file = new File("IP.txt");
+		if(file.exists()) {
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				ip = br.readLine();
+				br.close();
+				System.out.println("IP: "+ip);
+			}catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 	
