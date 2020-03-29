@@ -1,5 +1,6 @@
 package hammerhilfe.neupanel;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -10,21 +11,28 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import de.b100.swing.JGridPanel;
+import hammerhilfe.ConnectionUtils;
+import hammerhilfe.LoginInfo;
+import hammerhilfe.Utils;
+import hammerhilfe.panel.ListAndPreviewWindow;
 
 public abstract class NeuWindow implements ActionListener{
 	
-	private JFrame frame;
-	private JGridPanel panel;
-	private JPanel buttonPanel;
+	protected ListAndPreviewWindow listAndPreviewWindow;
 	
-	private JTextField titleField;
-	private JTextArea descriptionArea;
-	private JButton createButton;
+	protected JFrame frame;
+	protected JGridPanel panel;
+	protected JPanel buttonPanel;
+	
+	protected JTextField titleField;
+	protected JTextArea descriptionArea;
+	protected JButton createButton;
 	
 	protected String createButtonText = "Erstellen";
 	
+	protected String typ;
+	
 	public NeuWindow() {
-		
 	}
 	
 	public void create(JFrame parent) {
@@ -49,6 +57,34 @@ public abstract class NeuWindow implements ActionListener{
 		frame.setLocationRelativeTo(parent);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String title = titleField.getText();
+		String description = descriptionArea.getText();
+		String email = LoginInfo.email;
+		String token = LoginInfo.token;
+
+		title = Utils.toURL(title);
+		description = Utils.toURL(description);
+		email = Utils.toURL(email);
+		token = Utils.toURL(token);
+		typ = Utils.toURL(typ);
+		
+		String s = ConnectionUtils.getWebpageContent("eintragen.php?email=" + email + "&titel=" + title
+				+ "&description=" + description + "&token=" + token + "&typ=" + typ);
+		
+		System.out.println("\""+s+"\"");
+		
+		listAndPreviewWindow.update();
+	}
+	
+	public void setListAndPreviewWindow(ListAndPreviewWindow listAndPreviewWindow) {
+		this.listAndPreviewWindow = listAndPreviewWindow;
+	}
+	
+	public ListAndPreviewWindow getListAndPreviewWindow() {
+		return listAndPreviewWindow;
 	}
 	
 }

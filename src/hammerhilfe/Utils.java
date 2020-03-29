@@ -110,4 +110,10 @@ public abstract class Utils {
 		return false;
 	}
 	
+	public static String toURL(String str) {
+		str = str.replaceAll("&", "%26");
+		
+		return str;
+	}
+	
 }

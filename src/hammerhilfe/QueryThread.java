@@ -36,6 +36,7 @@ public class QueryThread extends Thread{
 					l.getPreviewTitle().setText(arr[0]);
 					l.getPreviewDescription().setText(arr[1]);
 					l.getPreviewImage().setImage(Library.getImageForString(arr[1]));
+					l.getDeleteButton().setEnabled(LoginInfo.email.equals(arr[2]));
 				}
 			}
 		}

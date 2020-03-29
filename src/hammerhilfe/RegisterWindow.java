@@ -51,12 +51,16 @@ public class RegisterWindow extends TextInputWindow{
 				
 				if(!password.equals(passwordConfirm)) {
 					message(getFrame(), "Die beiden Passwoerter stimmen nicht überein!");
+					return;
+				}
+				String email = emailField.getText();
+				
+				String str = ConnectionUtils.getWebpageContent("register.php?email="+email+"&password="+password);
+				
+				if(str.startsWith("ERROR: ")) {
+					message(getFrame(), str.substring("ERROR: ".length()));
 				}else {
-					String email = emailField.getText();
-					
-					String str = ConnectionUtils.getWebpageContent("register.php?email="+email+"&password="+password);
-					
-					System.out.println(str);
+					message(getFrame(), "Registriert!");
 				}
 			}
 			System.gc();

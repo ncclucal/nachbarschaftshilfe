@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.event.AncestorListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -17,8 +19,10 @@ import de.b100.swing.JGridPanel;
 import hammerhilfe.AngebotInfo;
 import hammerhilfe.ConnectionUtils;
 import hammerhilfe.ImagePanel;
+import hammerhilfe.LoginInfo;
 import hammerhilfe.MainWindow;
 import hammerhilfe.QueryThread;
+import hammerhilfe.Utils;
 import hammerhilfe.neupanel.NeuWindow;
 
 public abstract class ListAndPreviewWindow extends JGridPanel implements ListSelectionListener, ActionListener{
@@ -65,13 +69,14 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 		createButton = new JButton(createButtonText);
 		createButton.addActionListener(this);
 		deleteButton = new JButton("Löschen");
+		deleteButton.addActionListener(this);
 		
 		previewTitle.setEditable(false);
 		
 		previewPanel.add(previewTitle, 0, 0, 1, 1, 1, 0);
 		previewPanel.add(previewDescription, 0, 1, 1, 1, 1, 0);
 		previewPanel.add(previewImage, 0, 2, 1, 1, 1, 1);
-		previewPanel.add(deleteButton);
+		previewPanel.add(deleteButton, 1, 0, 1, 1, 0, 0);
 		
 		list.setPreferredSize(dim1);
 		list.addListSelectionListener(this);
@@ -107,7 +112,26 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		createWindow.create(mainWindow.getFrame());
+		if(e.getSource() == createButton) {
+			createWindow.create(mainWindow.getFrame());
+		}
+		if(e.getSource() == deleteButton ) {
+			String email = LoginInfo.email;
+			String token = LoginInfo.token;
+			String artikelNummer = list.getSelectedValue().getNummer();
+
+			email = Utils.toURL(email);
+			token = Utils.toURL(token);
+			artikelNummer = Utils.toURL(artikelNummer);
+			
+			String s = ConnectionUtils.getWebpageContent("delete_article.php?email="+email+"&token="+token+"&article="+artikelNummer);
+			
+			if(s.startsWith("ERROR")) {
+				JOptionPane.showMessageDialog(mainWindow.getFrame(), "Fehler");
+			}else {
+				update();
+			}
+		}
 	}
 	
 	public JTextField getPreviewTitle() {
@@ -128,6 +152,14 @@ public abstract class ListAndPreviewWindow extends JGridPanel implements ListSel
 	
 	public ArrayList<AngebotInfo> getArtikel() {
 		return artikel;
+	}
+	
+	public NeuWindow getCreateWindow() {
+		return createWindow;
+	}
+	
+	public JButton getDeleteButton() {
+		return deleteButton;
 	}
 	
 }

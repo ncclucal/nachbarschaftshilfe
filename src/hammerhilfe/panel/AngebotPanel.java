@@ -1,8 +1,5 @@
 package hammerhilfe.panel;
 
-import java.util.ArrayList;
-
-import hammerhilfe.AngebotInfo;
 import hammerhilfe.ConnectionUtils;
 import hammerhilfe.MainWindow;
 import hammerhilfe.neupanel.NeuesAngebotWindow;
@@ -13,6 +10,7 @@ public class AngebotPanel extends ListAndPreviewWindow{
 
 	public AngebotPanel(MainWindow mainWindow) {
 		super(mainWindow, "Neues Angebot", new NeuesAngebotWindow());
+		this.getCreateWindow().setListAndPreviewWindow(this);
 		update();
 	}
 

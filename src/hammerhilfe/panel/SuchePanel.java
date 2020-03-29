@@ -11,9 +11,9 @@ public class SuchePanel extends ListAndPreviewWindow{
 
 	public SuchePanel(MainWindow mainWindow) {
 		super(mainWindow, "Neue Bestellung", new NeueBestellungWindow());
+		this.getCreateWindow().setListAndPreviewWindow(this);
 		update();
 	}
-
 
 	public void update() {
 		setListData(ConnectionUtils.get("suche"));
