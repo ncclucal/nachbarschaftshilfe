@@ -1,9 +1,1 @@
-Angebote erstellen und Löschen
-
-Token abfragen
-	(Beim Eintragen/Löschen von Angeboten)
-	
-Registerwindow
-
-	
 Dateien im AppData Speichern
